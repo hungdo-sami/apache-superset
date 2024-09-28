@@ -1,14 +1,13 @@
-version: '3.8'  # Cập nhật version nếu cần
 services:
   superset:
     build: .
-    image: your_superset_image_name
+    image: apache-superset-custom
     container_name: superset-1
     ports:
       - "8088:8088"
     environment:
       - SUPERSET_DATABASE_URI=sqlite:////app/superset.db
-      - SUPERSET_SECRET_KEY=your_random_secret_key_here  # Thêm biến môi trường
+      - SUPERSET_SECRET_KEY=Hf1UPnkcSuJBvesM660puz56yhiSEVvrOWgMLFG16ER+4Iyz5MFIjcRF  # Thêm biến môi trường
     volumes:
       - superset_home:/app/superset_home
       - ./superset_config.py:/app/superset_config.py  # Sao chép file config
@@ -16,7 +15,7 @@ services:
       bash -c "
       superset db upgrade &&
       superset init &&
-      /app/init_user.sh && 
+      /app/init_user.sh &&
       superset run -h 0.0.0.0 -p 8088
       "
 
