@@ -7,7 +7,7 @@ services:
       - "8088:8088"
     environment:
       - SUPERSET_DATABASE_URI=sqlite:////app/superset.db
-      - SUPERSET_SECRET_KEY=Hf1UPnkcSuJBvesM660puz56yhiSEVvrOWgMLFG16ER+4Iyz5MFIjcRF  # Thêm biến môi trường
+      - SUPERSET_SECRET_KEY=Hf1UPnkcSuJBvesM660puz56yhiSEVvrOWgMLFG16ER+4Iyz5MFIjcRF  # Nên thay đổi key của bạn
     volumes:
       - superset_home:/app/superset_home
       - ./superset_config.py:/app/superset_config.py  # Sao chép file config
