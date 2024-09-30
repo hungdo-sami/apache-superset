@@ -12,8 +12,10 @@ USER superset
 
 # Run commands to set up Superset, including loading sample data
 RUN superset db upgrade \
-    && superset init \
-    && superset load_examples
+    && superset init
 
-# Copying the init script can also be done here if necessary
-ENTRYPOINT ["/app/init_user.sh"]
+# Optional: Remove superset load_examples if not needed or causing issues
+# && superset load_examples
+
+# Set ENTRYPOINT to execute the script
+ENTRYPOINT ["/bin/bash", "/app/init_user.sh"]
